@@ -14,3 +14,10 @@ SO THAT I can publish articles, blog posts, and my thoughts and opinions
 * Handlebars.js - Template langague
 * Sequelize - ORM
 * Express-session
+
+### Screenshot
+
+### Contact or questions
+[Coleyrockin Github](https://github.com/coleyrockin)
+
+[Coleyrockin@aol.com](mailto:coleyrockin@aol.com)
