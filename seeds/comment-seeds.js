@@ -20,7 +20,7 @@ const commentData = [
     comment_text: "I once ate an iphone",
     user_id: 4,
     post_id: 4,
-  },
+  }
 ];
 
 const seedComments = () => Comment.bulkCreate(commentData);

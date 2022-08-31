@@ -21,7 +21,7 @@ const postData = [
     title: "Where should i go to learn more about AWS?",
     content: "I want to........",
     user_id: 4,
-  },
+  }
 ];
 
 const seedPosts = () => Post.bulkCreate(postData);
