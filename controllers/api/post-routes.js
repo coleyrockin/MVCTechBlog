@@ -12,17 +12,17 @@ router.get("/", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["username"]
       },
       {
         model: Comment,
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
-        },
-      },
-    ],
+          attributes: ["username"]
+        }
+      }
+    ]
   })
     .then((dbPostData) => res.json(dbPostData.reverse()))
     .catch((err) => {
@@ -35,23 +35,23 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   Post.findOne({
     where: {
-      id: req.params.id,
+      id: req.params.id
     },
     attributes: ["id", "content", "title", "created_at"],
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["username"]
       },
       {
         model: Comment,
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
-        },
-      },
-    ],
+          attributes: ["username"]
+        }
+      }
+    ]
   })
     .then((dbPostData) => {
       if (!dbPostData) {
@@ -68,11 +68,10 @@ router.get("/:id", (req, res) => {
 
 // After user submits a new post, connect user session then get above
 router.post("/", withAuth, (req, res) => {
-  // creates a new Post model instance and calls save on it
   Post.create({
     title: req.body.title,
     content: req.body.content,
-    user_id: req.session.user_id,
+    user_id: req.session.user_id
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
@@ -88,13 +87,12 @@ router.put("/:id", withAuth, (req, res) => {
     {
       // hash of values to update
       title: req.body.title,
-      content: req.body.content,
+      content: req.body.content
     },
     {
-      // options to be met within the where attribute
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     }
   )
     .then((dbPostData) => {
@@ -112,11 +110,10 @@ router.put("/:id", withAuth, (req, res) => {
 
 // when user clicks 'delete' button, remove record from database entirely
 router.delete("/:id", withAuth, (req, res) => {
-  // Delete multiple instances, in this case just where the id has been selected. On a post/:id page, clicking the delete button will trigger the front end form that will ship a delete request back here
   Post.destroy({
     where: {
-      id: req.params.id,
-    },
+      id: req.params.id
+    }
   })
     .then((dbPostData) => {
       if (!dbPostData) {

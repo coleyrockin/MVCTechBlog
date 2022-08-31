@@ -5,7 +5,7 @@ const withAuth = require("../utils/auth");
 router.get("/", withAuth, (req, res) => {
   Post.findAll({
     where: {
-      user_id: req.session.user_id,
+      user_id: req.session.user_id
     },
     attributes: ["id", "title", "content", "created_at"],
     include: [
@@ -14,14 +14,14 @@ router.get("/", withAuth, (req, res) => {
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
-        },
+          attributes: ["username"]
+        }
       },
       {
         model: User,
-        attributes: ["username"],
-      },
-    ],
+        attributes: ["username"]
+      }
+    ]
   })
     .then((dbPostData) => {
       // A getter is a get() function defined for one column
@@ -40,23 +40,23 @@ router.get("/edit/:id", withAuth, (req, res) => {
   // if user is logged in, find that post by id
   Post.findOne({
     where: {
-      id: req.params.id,
+      id: req.params.id
     },
     attributes: ["id", "title", "content", "created_at"],
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["username"]
       },
       {
         model: Comment,
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
-        },
-      },
-    ],
+          attributes: ["username"]
+        }
+      }
+    ]
   })
     // if there is no post with that data found by id, post error
     .then((dbPostData) => {

@@ -17,27 +17,26 @@ router.get("/:id", (req, res) => {
   User.findOne({
     attributes: { exclude: ["password"] },
     where: {
-      id: req.params.id,
+      id: req.params.id
     },
     include: [
       {
         model: Post,
-        attributes: ["id", "title", "content", "created_at"],
+        attributes: ["id", "title", "content", "created_at"]
       },
-
       {
         model: Comment,
         attributes: ["id", "comment_text", "created_at"],
         include: {
           model: Post,
-          attributes: ["title"],
-        },
+          attributes: ["title"]
+        }
       },
       {
         model: Post,
         attributes: ["title"],
-      },
-    ],
+      }
+    ]
   })
     .then((dbUserData) => {
       if (!dbUserData) {
@@ -57,7 +56,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
-    password: req.body.password,
+    password: req.body.password
   })
 
     .then((dbUserData) => {
@@ -78,8 +77,8 @@ router.post("/", (req, res) => {
 router.post("/login", (req, res) => {
   User.findOne({
     where: {
-      username: req.body.username,
-    },
+      username: req.body.username
+    }
   })
     .then((dbUserData) => {
       if (!dbUserData) {
