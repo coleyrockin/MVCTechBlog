@@ -1,10 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+
 class Comment extends Model {}
 
 Comment.init({
+// sequelize figures out the id as a primary key for us
     id: {
-// set our value types: INTEGER, STRING, FLOAT, etc.
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -32,10 +33,12 @@ Comment.init({
             key: 'id'
         }
     }
-}, {
+}, 
+{
     sequelize,
     freezeTableName: true,
     underscored: true,
     modelName: 'comment'
 });
+
 module.exports = Comment;
