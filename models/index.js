@@ -1,7 +1,7 @@
 // import our 3 models created in the other files
-const User = require("./User");
-const Post = require("./Post");
-const Comment = require("./Comment");
+const User = require('./User');
+const Post = require('./Post');
+const Comment = require('./Comment');
 
 User.hasMany(Post, {
   // as foreign key to User

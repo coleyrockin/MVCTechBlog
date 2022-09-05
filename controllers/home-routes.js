@@ -1,9 +1,6 @@
-// imports our connections
-const sequelize = require("../config/connection");
-// imports our 3 model object files
-const { Post, User, Comment } = require("../models");
-// imports express' router object
-const router = require("express").Router();
+const router = require('express').Router();
+const sequelize = require('../config/connection');
+const { Post, User, Comment} = require('../models');
 
 // on home page, find all posts
 router.get("/", (req, res) => {

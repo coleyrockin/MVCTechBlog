@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 
 // create User model
 class User extends Model {
+    // run on instance data (per user) to check password 
     checkPassword(loginPW) {
         return bcrypt.compareSync(loginPW, this.password);
     }
@@ -26,7 +27,6 @@ User.init(
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            // password must be >=8 characters long
             len: [8]
         }
     }
