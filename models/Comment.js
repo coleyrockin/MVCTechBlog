@@ -7,13 +7,14 @@ Comment.init({
 // sequelize figures out the id as a primary key for us
     id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         primaryKey: true,
         autoIncrement: true
     },
     comment_text: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-
             len: [3]
         }
     },

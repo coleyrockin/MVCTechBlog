@@ -9,30 +9,24 @@ User.hasMany(Post, {
   });
 
 Post.belongsTo(User, {
-  foreignKey: 'user_id',
-  // set cascade if foreignKey does not allow nulls
-      onDelete: "cascade"
+  foreignKey: 'user_id'
   });
 
 // adds a foreign key and singular association mixins to the source
 Comment.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: "cascade"
+  foreignKey: 'user_id'
 });
 
 Comment.belongsTo(Post, {
-  foreignKey: 'post_id',
-  onDelete: "cascade"
+  foreignKey: 'post_id'
 });
 
 User.hasMany(Comment, {
-  foreignKey: 'user_id',
-  onDelete: "cascade"
+  foreignKey: 'user_id'
 });
 
 Post.hasMany(Comment, {
-  foreignKey: 'post_id',
-  onDelete: "cascade"
+  foreignKey: 'post_id'
 });
 
 module.exports = { User, Post, Comment };
