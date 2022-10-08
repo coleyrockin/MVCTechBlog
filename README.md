@@ -21,7 +21,7 @@ SO THAT I can publish articles, blog posts, and my thoughts and opinions
 - Express-session
 
 ### Screenshot
-
+![img](./assets/img/MVCtechblog.png)
 ### Contact or questions
 
 [Coleyrockin Github](https://github.com/coleyrockin)
